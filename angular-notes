@@ -1,0 +1,39 @@
+web application
+
+	- had multiple pages in it
+	- MPA 
+
+
+front end application backend application
+
+MPA - Multi page application
+
+SPA - Single Page Application
+	- the entire application has only one page
+	- we manipulate the DOM of this page to make it dynamic
+	- JS is the best choice to manipulate DOM
+	- using plain vanilla JS is not feasible to manipuilate the DOM
+	- here frameworks make it easier for us
+	- we can use angular framework to create SPA
+	- angular uses typescript, typscript is a super set of javascript
+
+	- in order to work with angular we need to install angular/cli
+	- to install angular cli we need npm(node package manager)
+	- we get npm by installing node js
+
+to check the verison of nodejs
+	 node --version
+to check the version of npm
+	 npm --version
+install angular/cli using npm, this will install the latest version of angular
+	 npm install -g @angular/cli
+check the version of angular installed
+	ng version
+we are now good to create an angular project in the cmd using the ng command, create a folder for your project
+	ng new my-hello-angular
+		choose y for angular routing
+		choose CSS for stylesheet
+now a new angular project is created, open this project in vscode
+in cmd, navigate to the angular project folder and start the angular live developemnt server
+	ng serve
+
