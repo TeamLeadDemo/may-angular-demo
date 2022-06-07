@@ -1,3 +1,11 @@
+to run the demo angular project in your local machine
+----------------------------------------------------
+    - clone the project to your local
+    - this does not have the node_modules
+    - but we need the node_modules to run the application
+    - run the command "npm install" in the cmd and this will install the node_modules folder ( be inside the project folder)
+    - this command will look into the package.json and install the node_modules
+
 web application
 
 	- had multiple pages in it
@@ -76,3 +84,14 @@ one way property binding - the property in the component class is bound to the t
 two way property binding - the property int the component class is bound to the template and vice versa
                         - we use ngModel for 2 way property binding
                         - to use ngModel, we have to include FormsModule under the imports attribute of app.module.ts
+angular routing
+------------------
+    - each component is provided a route path
+
+    steps for routing with HeaderComponent
+        1) provie a route path to each component in the app-routing.module.ts
+        2) Create a HeaderComponent with anchor tags and place it on AppComponent
+        3) specify the route path of the component when the anchor tags are clicked
+        4) specify the <router-outlet>
+        5) use routerLink instead of href for anchor tags, we dont want the entire page to be reloaded from the server
+        6) there is more to routing -  will discuss later
