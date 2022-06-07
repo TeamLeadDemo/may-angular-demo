@@ -16,6 +16,9 @@ SPA - Single Page Application
 	- here frameworks make it easier for us
 	- we can use angular framework to create SPA
 	- angular uses typescript, typscript is a super set of javascript
+    - typescript files are saved with .ts
+    - browsers never understand typescript, 
+    - so typescript is transpiled to java script when the application is built
 
 	- in order to work with angular we need to install angular/cli
 	- to install angular cli we need npm(node package manager)
@@ -37,3 +40,39 @@ now a new angular project is created, open this project in vscode
 in cmd, navigate to the angular project folder and start the angular live developemnt server
 	ng serve
 
+- angular is all about components
+- {{ }} string interpolation
+    - we can render a property from the component.ts file into the template using string interpolation
+
+- we are good to create our own components
+- we are going to create a component DisplayComponent
+- there are 4 files associated with a compnent
+    <comp>.component.ts
+    <comp>.component.html
+    <comp>.component.css
+    <comp>.component.spec.ts
+
+- steps to create a component
+    1) create the files for the component
+    2) include the component in app.module.ts file
+    3) use the component's selector
+
+- 2 ways to create a component
+    - manually create all the files - tedious
+    - or could use the commmand ng generate component
+            ng generate component display
+            ng g c display
+            this command will automatically make an entry in the app.module.ts
+
+
+string interpolation {{ }} - we were able to render a property of the component in the template
+
+property binding [] - we were able to bind a property of the component to the value attribute of the text box in the template
+
+event binding () - we bind an event in the template to a function in the component class
+
+one way property binding - the property in the component class is bound to the template and not vice versa
+                        - we use {{ }} or []
+two way property binding - the property int the component class is bound to the template and vice versa
+                        - we use ngModel for 2 way property binding
+                        - to use ngModel, we have to include FormsModule under the imports attribute of app.module.ts
