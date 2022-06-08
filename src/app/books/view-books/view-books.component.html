@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-2">
+        </div>
+        <div class="col-8">
+            <h2>View Books</h2>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>IMAGE</td>
+                        <td>TITLE</td>
+                        <td>GENRE</td>
+                        <td>AUTHOR</td>
+                        <td>COST</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let book of allBooks">
+                       <td>{{ book.id }}</td> 
+                       <td><img [src]="book.bookImage" height="80px" width="100px"></td> 
+                       <td>{{ book.bookTitle }}</td> 
+                       <td>{{ book.bookGenre }}</td> 
+                       <td>{{ book.bookAuthor }}</td> 
+                       <td>{{ book.bookCost }}</td> 
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-2">
+        </div>
+    </div>
+</div>

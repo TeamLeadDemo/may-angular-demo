@@ -72,6 +72,8 @@ in cmd, navigate to the angular project folder and start the angular live develo
             ng g c display
             this command will automatically make an entry in the app.module.ts
 
+strong interview questions
+-----------------------------
 
 string interpolation {{ }} - we were able to render a property of the component in the template
 
@@ -84,6 +86,7 @@ one way property binding - the property in the component class is bound to the t
 two way property binding - the property int the component class is bound to the template and vice versa
                         - we use ngModel for 2 way property binding
                         - to use ngModel, we have to include FormsModule under the imports attribute of app.module.ts
+                        - eg CounterComponent
 angular routing
 ------------------
     - each component is provided a route path
