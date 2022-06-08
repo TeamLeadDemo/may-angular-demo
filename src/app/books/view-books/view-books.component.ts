@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../book.model';
+import { BooksService } from '../books.service';
 
 @Component({
   selector: 'view-books',
@@ -7,6 +8,15 @@ import { Book } from '../book.model';
   styleUrls: ['./view-books.component.css']
 })
 export class ViewBooksComponent implements OnInit {
+
+// properties/fields are declared here and initialized in the constructor
+// ViewBookComponent is dependent on BooksService class
+// we can use DI(Dependency Injection) to inject BooksService into this component
+
+//bookService: BooksService;
+currentAllBooks: Book[];
+
+shouldDisplay: boolean = false;
 
 // here we are creating a property testBook of type Book
 // this enforces the Book structure for the testBook property
@@ -21,36 +31,66 @@ testBook: Book = {
     bookImage: 'https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80'
 };
 
-allBooks: Book[] = [
-  {
-    id: 101,
-    bookTitle: 'Harry Potter and the Order of Phoenix',
-    bookAuthor: 'J.K.Rowling',
-    bookGenre: 'Fiction',
-    bookCost: 100,
-    bookImage: 'https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80'
-  },
-  {
-    id: 102,
-    bookTitle: 'Harry Potter and the Sorcerers Stone',
-    bookAuthor: 'J.K.Rowling',
-    bookGenre: 'Fiction',
-    bookCost: 150,
-    bookImage: 'https://images.unsplash.com/photo-1600189261867-30e5ffe7b8da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'
-  },
-  {
-    id: 103,
-    bookTitle: 'Harry Potter and the Deathly Hallows',
-    bookAuthor: 'J.K.Rowling',
-    bookGenre: 'Fiction',
-    bookCost: 170,
-    bookImage: 'https://images.unsplash.com/photo-1611676279444-5577698aa13c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'
-  }
-];
 
-  constructor() { }
+
+// we have moved the book data to the service class
+// allBooks: Book[] = [
+//   {
+//     id: 101,
+//     bookTitle: 'Harry Potter and the Order of Phoenix',
+//     bookAuthor: 'J.K.Rowling',
+//     bookGenre: 'Fiction',
+//     bookCost: 100,
+//     bookImage: 'https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80'
+//   },
+//   {
+//     id: 102,
+//     bookTitle: 'Harry Potter and the Sorcerers Stone',
+//     bookAuthor: 'J.K.Rowling',
+//     bookGenre: 'Fiction',
+//     bookCost: 150,
+//     bookImage: 'https://images.unsplash.com/photo-1600189261867-30e5ffe7b8da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'
+//   },
+//   {
+//     id: 103,
+//     bookTitle: 'Harry Potter and the Deathly Hallows',
+//     bookAuthor: 'J.K.Rowling',
+//     bookGenre: 'Fiction',
+//     bookCost: 170,
+//     bookImage: 'https://images.unsplash.com/photo-1611676279444-5577698aa13c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'
+//   }
+// ];
+
+// here we are injecting(DI) BooksService in to this component through the constructor
+// private says that bookService must become a field/property of the component
+    // otherwise bookService will be treated a local variable to the constructor
+        // and if it is local it cannot be used outside of the constructor
+  constructor(private bookService: BooksService) { 
+    this.currentAllBooks = [];
+    //this.bookService = new BooksService();
+  }
 
   ngOnInit(): void {
+    this.currentAllBooks = this.bookService.getAllBooks();
   }
 
+  deleteBook(bookId: number){
+    this.currentAllBooks = this.bookService.deleteBook(bookId);
+  }
+
+  editBook(){
+    console.log("edit");
+  }
+
+  displayBookForm(){
+    if(this.shouldDisplay){
+      this.shouldDisplay = false;
+    }else{
+      this.shouldDisplay = true;
+    }
+  }
+
+  addANewBook(){
+    
+  }
 }
