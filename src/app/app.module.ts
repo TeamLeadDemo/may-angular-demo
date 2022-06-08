@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ListFruitsComponent } from './list-fruits/list-fruits.component';
 import { HeaderComponent } from './header/header.component';
 import { ViewBooksComponent } from './books/view-books/view-books.component';
+import { EditBookComponent } from './books/edit-book/edit-book.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ViewBooksComponent } from './books/view-books/view-books.component';
     CounterComponent,
     ListFruitsComponent,
     HeaderComponent,
-    ViewBooksComponent
+    ViewBooksComponent,
+    EditBookComponent
   ],
   imports: [
     BrowserModule,

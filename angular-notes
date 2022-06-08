@@ -91,6 +91,12 @@ angular routing
 ------------------
     - each component is provided a route path
 
+    3 ways to route to a component
+        - directly type the route path in the url - we dont do this
+        - use anchor tags with routerLink
+        - use Router api
+
+
     steps for routing with HeaderComponent
         1) provie a route path to each component in the app-routing.module.ts
         2) Create a HeaderComponent with anchor tags and place it on AppComponent

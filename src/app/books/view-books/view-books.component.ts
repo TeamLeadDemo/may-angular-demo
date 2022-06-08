@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Book } from '../book.model';
 import { BooksService } from '../books.service';
 
@@ -31,7 +32,14 @@ testBook: Book = {
     bookImage: 'https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80'
 };
 
-
+newBook: Book = {
+  id: 0,
+  bookTitle: '',
+  bookAuthor: '',
+  bookGenre: '',
+  bookCost: 0,
+  bookImage: ''
+};
 
 // we have moved the book data to the service class
 // allBooks: Book[] = [
@@ -65,7 +73,7 @@ testBook: Book = {
 // private says that bookService must become a field/property of the component
     // otherwise bookService will be treated a local variable to the constructor
         // and if it is local it cannot be used outside of the constructor
-  constructor(private bookService: BooksService) { 
+  constructor(private bookService: BooksService, private router: Router) { 
     this.currentAllBooks = [];
     //this.bookService = new BooksService();
   }
@@ -78,8 +86,11 @@ testBook: Book = {
     this.currentAllBooks = this.bookService.deleteBook(bookId);
   }
 
-  editBook(){
-    console.log("edit");
+  goToEditBook(){
+    // here we have to navigate to EditBookComponent whose route path is edit-book
+    // for this we need to use Router api
+    // we can inject Router in the component's constructor and use it here
+    this.router.navigate(['edit-book']);
   }
 
   displayBookForm(){
@@ -91,6 +102,30 @@ testBook: Book = {
   }
 
   addANewBook(){
-    
+    // copying the property newBook object in to a local localNewBook object
+    let localNewBook: Book = {
+      id: 0,
+      bookTitle: this.newBook.bookTitle,
+      bookAuthor: this.newBook.bookAuthor,
+      bookGenre: this.newBook.bookGenre,
+      bookCost: this.newBook.bookCost,
+      bookImage: this.newBook.bookImage
+    }
+
+    // clear the form after the data is copied into a local Book object
+    this.newBook = {
+      id: 0,
+      bookTitle: '',
+      bookAuthor: '',
+      bookGenre: '',
+      bookCost: 0,
+      bookImage: ''
+    };
+
+    // hiding the form
+    this.shouldDisplay = false;
+
+    // sending the local object to service layer to add it to the array
+    this.currentAllBooks = this.bookService.addBook(localNewBook);
   }
 }
