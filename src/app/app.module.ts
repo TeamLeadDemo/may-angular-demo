@@ -10,6 +10,7 @@ import { ListFruitsComponent } from './list-fruits/list-fruits.component';
 import { HeaderComponent } from './header/header.component';
 import { ViewBooksComponent } from './books/view-books/view-books.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EditBookComponent } from './books/edit-book/edit-book.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

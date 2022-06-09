@@ -108,3 +108,24 @@ angular routing
 
 
 ngModel - creates a FormControl object
+
+we can create form in 2 different ways
+---------------------------------------
+1) Template driven forms
+    - we used this in the session
+    - within the form tag each input element has a ngModel which creates FormControl object
+    - This FormControl object holds the entire info about the input element
+2) Reactive forms
+    - we do not use ngModel here, instaed we create the FormControl object in the component class
+    - more coding than template driven forms
+
+Complete topics of Angular
+--------------------------
+    - Components
+    - Directives
+    - Modules
+    - Forms - Template or Reactive
+    - Pipes
+    - HttpClient
+    - routing with RouteGaurds
+    - EventEmitters

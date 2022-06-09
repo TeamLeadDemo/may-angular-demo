@@ -19,7 +19,7 @@
                    minlength="2"
                    maxlength="200"
                    #bkTitle="ngModel"
-                   (change)="logTheChanges(bkTitle)">
+                   (change)="logTheChanges(myForm)">
                 <div *ngIf="!bkTitle.valid" class="text-danger small">
                     Book Title is required!
                 </div>
