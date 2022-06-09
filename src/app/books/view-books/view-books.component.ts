@@ -86,11 +86,11 @@ newBook: Book = {
     this.currentAllBooks = this.bookService.deleteBook(bookId);
   }
 
-  goToEditBook(){
+  goToEditBook(bookId: number){
     // here we have to navigate to EditBookComponent whose route path is edit-book
     // for this we need to use Router api
     // we can inject Router in the component's constructor and use it here
-    this.router.navigate(['edit-book']);
+    this.router.navigate(['edit-book',bookId]); // sending incomming bookId as a route parameter
   }
 
   displayBookForm(){

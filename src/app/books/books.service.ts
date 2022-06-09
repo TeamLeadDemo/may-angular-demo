@@ -57,4 +57,29 @@ export class BooksService {
 
     return this.allBooks;
   }
+
+  getABook(bookId: any): Book{
+    let sendBook: Book = {
+      id: 0,
+      bookTitle: '',
+      bookAuthor: '',
+      bookGenre: '',
+      bookCost: 0,
+      bookImage: ''
+    }
+    for(let i=0; i<this.allBooks.length;i++){
+      if(this.allBooks[i].id == bookId){
+        sendBook = this.allBooks[i];
+      }
+    }
+    return sendBook;
+  }
+
+  updateBook(sentBook: Book): void{
+    for(let i=0; i<this.allBooks.length;i++){
+      if(this.allBooks[i].id == sentBook.id){
+        this.allBooks[i] = sentBook;
+      }
+    }
+  }
 }
