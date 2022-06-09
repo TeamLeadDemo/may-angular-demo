@@ -105,3 +105,6 @@ angular routing
         - use anchor tags with routerLink
         - use Router api
 
+
+
+ngModel - creates a FormControl object

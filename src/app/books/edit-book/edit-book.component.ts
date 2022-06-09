@@ -28,10 +28,12 @@ export class EditBookComponent implements OnInit {
     // and send the retrived bid to service layer and fetch the book object
 
     // to retreive the route parameter we need the api ActivatedRoute
+    // so ActivatedRoute has to be injected into this component
     let bidParam = this.activatedRoute.snapshot.paramMap.get('bid');
     console.log(bidParam);
 
     // now send the bidParam to the service layer and fetch the book object
+    // and assign it to updateBook which is 2 way bound to the the template
     this.updateBook =  this.bookService.getABook(bidParam);
 
   }
@@ -43,5 +45,9 @@ export class EditBookComponent implements OnInit {
 
     // navigate to the view-book route using Router api
     this.router.navigate(['view-books']);
+  }
+
+  logTheChanges(title: any){
+    console.log(title);
   }
 }

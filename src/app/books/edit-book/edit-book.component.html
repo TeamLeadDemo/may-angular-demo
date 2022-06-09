@@ -1,5 +1,5 @@
 <div class="container">
-    <form>
+    <form #myForm="ngForm">
      <div class="card m-3">
        <div class="card-header bg-primary">BOOK UPDATE FORM</div>
        <div class="card-body">
@@ -14,7 +14,15 @@
                    id="bTitle" 
                    placeholder="Enter book title" 
                    name="bookTitle"
-                   [(ngModel)]="updateBook.bookTitle">
+                   [(ngModel)]="updateBook.bookTitle"
+                   required
+                   minlength="2"
+                   maxlength="200"
+                   #bkTitle="ngModel"
+                   (change)="logTheChanges(bkTitle)">
+                <div *ngIf="!bkTitle.valid" class="text-danger small">
+                    Book Title is required!
+                </div>
            </div>
            <div class="mb-3">
                <label for="bAuthor" class="form-label">Book Author:</label>
@@ -24,7 +32,12 @@
                    id="bAuthor" 
                    placeholder="Enter book author" 
                    name="bookAuthor"
+                   required
+                   #bkAuthor="ngModel"
                    [(ngModel)]="updateBook.bookAuthor">
+                <div *ngIf="!bkAuthor.valid" class="text-danger small">
+                    Book Author is required!
+                </div>
            </div>
            <div class="mb-3">
                <label for="bGenre" class="form-label">Book Genre:</label>
@@ -34,7 +47,12 @@
                    id="bGenre" 
                    placeholder="Enter book genre" 
                    name="bookGenre"
-                   [(ngModel)]="updateBook.bookGenre">
+                   #bkGenre="ngModel"
+                   [(ngModel)]="updateBook.bookGenre"
+                   required>
+                <div *ngIf="!bkGenre.valid" class="text-danger small">
+                    Book Genre is required!
+                </div>
            </div>
            <div class="mb-3">
                <label for="bCost" class="form-label">Book Cost:</label>
@@ -44,7 +62,12 @@
                    id="bCost" 
                    placeholder="Enter book cost" 
                    name="bookCost"
-                   [(ngModel)]="updateBook.bookCost">
+                   #bkCost="ngModel"
+                   [(ngModel)]="updateBook.bookCost"
+                   required>
+                <div *ngIf="!bkCost.valid" class="text-danger small">
+                    Book Cost is required!
+                </div>
            </div>
            <div class="mb-3">
                <label for="bImage" class="form-label">Book Image Url:</label>
@@ -54,14 +77,20 @@
                    id="bImage" 
                    placeholder="Enter book image url" 
                    name="bookImage"
-                   [(ngModel)]="updateBook.bookImage">
+                   #bkImage="ngModel"
+                   [(ngModel)]="updateBook.bookImage"
+                   required>
+                <div *ngIf="!bkImage.valid" class="text-danger small">
+                    Book Image is required!
+                </div>
            </div>
        </div>
        <div class="card-footer bg-primary">
            <button 
                type="button" 
                class="btn btn-warning" 
-               (click)="updateBookInfo()">Update Book</button>
+               (click)="updateBookInfo()"
+               [disabled]="!myForm.valid">Update Book</button>
        </div>
      </div>
     </form>
