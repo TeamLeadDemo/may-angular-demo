@@ -22,7 +22,13 @@
                                 id="bTitle" 
                                 placeholder="Enter book title" 
                                 name="bookTitle"
-                                [(ngModel)]="newBook.bookTitle">
+                                [(ngModel)]="newBook.bookTitle"
+                                #bkTitle="ngModel"
+                                required>
+
+                            <div *ngIf="!bkTitle.valid && bkTitle.touched" class="text-danger small">
+                                   Book Title is required!
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="bAuthor" class="form-label">Book Author:</label>
