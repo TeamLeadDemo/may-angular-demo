@@ -11,6 +11,8 @@ import { HeaderComponent } from './header/header.component';
 import { ViewBooksComponent } from './books/view-books/view-books.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ViewHttpBooksComponent } from './books/view-http-books/view-http-books.component';
+import { EditHttpBookComponent } from './books/edit-http-book/edit-http-book.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
     ListFruitsComponent,
     HeaderComponent,
     ViewBooksComponent,
-    EditBookComponent
+    EditBookComponent,
+    ViewHttpBooksComponent,
+    EditHttpBookComponent
   ],
   imports: [
     BrowserModule,

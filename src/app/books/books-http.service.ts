@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class BooksHttpService {
 
   baseUrl: string = "http://localhost:7474/books";
+  
   constructor(private http: HttpClient) { }
 
   getAllBooks(): Observable<Book[]>{
@@ -17,22 +18,22 @@ export class BooksHttpService {
    //so lets inject HttpClient in the constructor
 
    // the get methods returns an Observable which is returned back to the caller
-  return this.http.get<Book[]>(this.baseUrl);
+    return this.http.get<Book[]>(this.baseUrl);
   }
 
-  deleteBook(bookId: number): void{
-    
+  deleteBook(bookId: number): Observable<boolean>{
+    return this.http.delete<boolean>(this.baseUrl+'/'+bookId);
   }
 
-  addBook(newBook: Book): void{
-    
+  addBook(newBook: Book): Observable<Book>{
+    return this.http.post<Book>(this.baseUrl, newBook);
   }
 
-  getABook(bookId: any): void{
-    
+  getABook(bookId: any): Observable<Book>{
+    return this.http.get<Book>(this.baseUrl+'/'+bookId);
   }
 
-  updateBook(sentBook: Book): void{
-    
+  updateBook(sentBook: Book): Observable<Book>{
+    return this.http.put<Book>(this.baseUrl, sentBook);
   }
 }

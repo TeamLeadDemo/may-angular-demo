@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Book } from '../book.model';
-import { BooksHttpService } from '../books-http.service';
 import { BooksService } from '../books.service';
 
 @Component({
@@ -74,20 +73,17 @@ newBook: Book = {
 // private says that bookService must become a field/property of the component
     // otherwise bookService will be treated a local variable to the constructor
         // and if it is local it cannot be used outside of the constructor
-  constructor(private bookHttpService: BooksHttpService, private router: Router) { 
+  constructor(private bookService: BooksService, private router: Router) { 
     this.currentAllBooks = [];
     //this.bookService = new BooksService();
   }
 
   ngOnInit(): void {
-    this.bookHttpService.getAllBooks().subscribe((response)=>{
-      console.log(response);
-      this.currentAllBooks = response;
-    })
+    this.currentAllBooks = this.bookService.getAllBooks();
   }
 
   deleteBook(bookId: number){
-    
+    this.currentAllBooks = this.bookService.deleteBook(bookId);
   }
 
   goToEditBook(bookId: number){
@@ -106,7 +102,30 @@ newBook: Book = {
   }
 
   addANewBook(){
-    
-    
+    // copying the property newBook object in to a local localNewBook object
+    let localNewBook: Book = {
+      id: 0,
+      bookTitle: this.newBook.bookTitle,
+      bookAuthor: this.newBook.bookAuthor,
+      bookGenre: this.newBook.bookGenre,
+      bookCost: this.newBook.bookCost,
+      bookImage: this.newBook.bookImage
+    }
+
+    // clear the form after the data is copied into a local Book object
+    this.newBook = {
+      id: 0,
+      bookTitle: '',
+      bookAuthor: '',
+      bookGenre: '',
+      bookCost: 0,
+      bookImage: ''
+    };
+
+    // hiding the form
+    this.shouldDisplay = false;
+
+    // sending the local object to service layer to add it to the array
+    this.currentAllBooks = this.bookService.addBook(localNewBook);
   }
 }
