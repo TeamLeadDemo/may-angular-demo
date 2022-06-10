@@ -122,10 +122,23 @@ we can create form in 2 different ways
 Complete topics of Angular
 --------------------------
     - Components
-    - Directives
+    - Directives( in built and custom)
     - Modules
     - Forms - Template or Reactive
-    - Pipes
+    - Form Validations
+    - Pipes(in built and custom)
     - HttpClient
     - routing with RouteGaurds
     - EventEmitters
+
+Route Gaurds
+------------
+    - we are working with CanActivate Route Guard
+    - create the guard using the command 
+            ng g g users/authentication
+    - write the logic for the guard
+    - configure the guard for the components which needs login validation
+    - for this in app.routing.module.ts file include these lines for the components which requires route guards
+        { path: "display", component: DisplayComponent, canActivate: AuthenticationGuard] }
+    - now we can test by trying to access the components without logging in
+        - for this type the route path of the component directly in the url

@@ -7,18 +7,19 @@ import { ViewHttpBooksComponent } from './books/view-http-books/view-http-books.
 import { CounterComponent } from './counter/counter.component';
 import { DisplayComponent } from './display/display.component';
 import { ListFruitsComponent } from './list-fruits/list-fruits.component';
+import { AuthenticationGuard } from './users/authentication.guard';
 import { LoginComponent } from './users/login/login.component';
 import { LogoutComponent } from './users/logout/logout.component';
 
 // specify the route paths of the components here
 const routes: Routes = [
-  { path: "display", component: DisplayComponent },
-  { path: "counter", component: CounterComponent },
-  { path: "list-fruits", component: ListFruitsComponent },
-  { path: "view-books", component: ViewBooksComponent },
-  { path: "edit-book/:bid", component: EditBookComponent },
-  { path: "view-http-books", component: ViewHttpBooksComponent },
-  { path: "edit-http-book/:bid", component: EditHttpBookComponent },
+  { path: "display", component: DisplayComponent, canActivate:[AuthenticationGuard] },
+  { path: "counter", component: CounterComponent, canActivate:[AuthenticationGuard] },
+  { path: "list-fruits", component: ListFruitsComponent, canActivate:[AuthenticationGuard] },
+  { path: "view-books", component: ViewBooksComponent, canActivate:[AuthenticationGuard] },
+  { path: "edit-book/:bid", component: EditBookComponent, canActivate:[AuthenticationGuard] },
+  { path: "view-http-books", component: ViewHttpBooksComponent, canActivate:[AuthenticationGuard] },
+  { path: "edit-http-book/:bid", component: EditHttpBookComponent, canActivate:[AuthenticationGuard] },
   { path: "login", component: LoginComponent },
   { path: "logout", component: LogoutComponent },
 ];
