@@ -26,6 +26,9 @@
               <li class="nav-item" *ngIf="hasLoggedIn() && getRole()=='employee'">
                 <a class="nav-link" routerLink="list-fruits">List Fruits Component</a>
               </li>
+              <li class="nav-item" *ngIf="hasLoggedIn() && getRole()=='employee'">
+                <a class="nav-link" routerLink="colors">Color Component</a>
+              </li>
               <li class="nav-item" *ngIf="hasLoggedIn() && getRole()=='admin'">
                 <a class="nav-link" routerLink="view-books">View Books Component</a>
               </li>

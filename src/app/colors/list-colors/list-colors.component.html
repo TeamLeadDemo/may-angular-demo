@@ -1,0 +1,6 @@
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let color of allColors">
+        <!-- {{ color.colorId }} , {{ color.colorName }} -->
+        <app-color [colorInfo]="color" (removeEvent)="removeInParent($event)"></app-color>
+    </li>
+</ul>

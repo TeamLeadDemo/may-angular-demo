@@ -15,6 +15,8 @@ import { ViewHttpBooksComponent } from './books/view-http-books/view-http-books.
 import { EditHttpBookComponent } from './books/edit-http-book/edit-http-book.component';
 import { LoginComponent } from './users/login/login.component';
 import { LogoutComponent } from './users/logout/logout.component';
+import { ListColorsComponent } from './colors/list-colors/list-colors.component';
+import { ColorComponent } from './colors/color/color.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { LogoutComponent } from './users/logout/logout.component';
     ViewHttpBooksComponent,
     EditHttpBookComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    ListColorsComponent,
+    ColorComponent
   ],
   imports: [
     BrowserModule,
