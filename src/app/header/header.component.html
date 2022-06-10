@@ -17,20 +17,26 @@
           </button>
           <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
-              <li class="nav-item">
+              <li class="nav-item" *ngIf="hasLoggedIn() && getRole()=='employee'">
                 <a class="nav-link" routerLink="display">Display Component</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" *ngIf="hasLoggedIn() && getRole()=='employee'">
                 <a class="nav-link" routerLink="counter">Counter Component</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" *ngIf="hasLoggedIn() && getRole()=='employee'">
                 <a class="nav-link" routerLink="list-fruits">List Fruits Component</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" *ngIf="hasLoggedIn() && getRole()=='admin'">
                 <a class="nav-link" routerLink="view-books">View Books Component</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" *ngIf="hasLoggedIn() && getRole()=='admin'">
                 <a class="nav-link" routerLink="view-http-books">View Http Books Component</a>
+              </li>
+              <li class="nav-item" *ngIf="!hasLoggedIn()">
+                <a class="nav-link" routerLink="login">Login</a>
+              </li>
+              <li class="nav-item" *ngIf="hasLoggedIn()">
+                <a class="nav-link" routerLink="logout">Logout</a>
               </li>
             </ul>
           </div>

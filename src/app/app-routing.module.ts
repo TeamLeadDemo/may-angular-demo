@@ -7,6 +7,8 @@ import { ViewHttpBooksComponent } from './books/view-http-books/view-http-books.
 import { CounterComponent } from './counter/counter.component';
 import { DisplayComponent } from './display/display.component';
 import { ListFruitsComponent } from './list-fruits/list-fruits.component';
+import { LoginComponent } from './users/login/login.component';
+import { LogoutComponent } from './users/logout/logout.component';
 
 // specify the route paths of the components here
 const routes: Routes = [
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: "edit-book/:bid", component: EditBookComponent },
   { path: "view-http-books", component: ViewHttpBooksComponent },
   { path: "edit-http-book/:bid", component: EditHttpBookComponent },
+  { path: "login", component: LoginComponent },
+  { path: "logout", component: LogoutComponent },
 ];
 
 @NgModule({
