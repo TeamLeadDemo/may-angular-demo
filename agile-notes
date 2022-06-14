@@ -1,0 +1,38 @@
+agile manifesto and the 12 principles
+    https://agilemanifesto.org/
+
+frameworks 
+    scrum
+    kanban
+
+scrum team
+----------
+    product owner(may be a person from the clients side)
+    scrum master( may not be a technical person, but should have a good knowledge on the bussiness flow)
+    3 to 4 developers
+    3 to 4 testers
+    devops
+
+    architect
+    DB architect
+
+documents
+    product backlog
+        - the entire project is split into user stories and fed into the product backlog
+        - it is not fixed
+    sprint backlog
+        - pull whichever user stories has been decides from the product backlog and keep it here
+
+    not mandatory
+    -------------
+    High level design documents
+    schema diagram
+
+user story points
+
+image references
+    https://image.shutterstock.com/shutterstock/photos/1894420378/display_1500/stock-vector-agile-vs-waterfall-methodology-for-software-development-life-cycle-diagram-1894420378.jpg
+
+    https://www.parabol.co/wp-content/uploads/2021/10/The-5-Scrum-Ceremonies-in-order-1.png
+
+    https://image.shutterstock.com/image-vector/agile-development-methodology-software-developments-260nw-1424774744.jpg

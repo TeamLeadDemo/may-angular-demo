@@ -7,8 +7,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BooksHttpService {
+  // baseurl for the javalin book crud project
+  //baseUrl: string = "http://localhost:7474/books";
 
-  baseUrl: string = "http://localhost:7474/books";
+  // baseurl for the spring rest book crud project
+  baseUrl: string = "http://localhost:5555/api/books";
   
   constructor(private http: HttpClient) { }
 

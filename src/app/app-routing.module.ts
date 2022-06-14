@@ -19,8 +19,8 @@ const routes: Routes = [
   { path: "list-fruits", component: ListFruitsComponent, canActivate:[AuthenticationGuard] },
   { path: "view-books", component: ViewBooksComponent, canActivate:[AuthenticationGuard] },
   { path: "edit-book/:bid", component: EditBookComponent, canActivate:[AuthenticationGuard] },
-  { path: "view-http-books", component: ViewHttpBooksComponent, canActivate:[AuthenticationGuard] },
-  { path: "edit-http-book/:bid", component: EditHttpBookComponent, canActivate:[AuthenticationGuard] },
+  { path: "view-http-books", component: ViewHttpBooksComponent }, // removed the route guard to test the component without logging in
+  { path: "edit-http-book/:bid", component: EditHttpBookComponent },
   { path: "login", component: LoginComponent },
   { path: "logout", component: LogoutComponent },
   { path: "colors", component: ListColorsComponent },
