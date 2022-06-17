@@ -81,48 +81,53 @@
                  </form>
                 </div>
             </div>
-            <h2>View Books</h2>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <td>ID</td>
-                        <td>IMAGE</td>
-                        <td>TITLE</td>
-                        <td>GENRE</td>
-                        <td>AUTHOR</td>
-                        <td>COST</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let book of currentAllBooks">
-                       <td>{{ book.id }}</td> 
-                       <td><img [src]="book.bookImage" height="80px" width="100px"></td> 
-                       <td>{{ book.bookTitle }}</td> 
-                       <td>{{ book.bookGenre | uppercase}}</td> 
-                       <td>{{ book.bookAuthor }}</td> 
-                       <td>{{ book.bookCost }}</td> 
-                       <td>
+            <div *ngIf="storeMessage==''">
+                <h2>View Books</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>IMAGE</td>
+                            <td>TITLE</td>
+                            <td>GENRE</td>
+                            <td>AUTHOR</td>
+                            <td>COST</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let book of currentAllBooks">
+                           <td>{{ book.id }}</td> 
+                           <td><img [src]="book.bookImage" height="80px" width="100px"></td> 
+                           <td>{{ book.bookTitle }}</td> 
+                           <td>{{ book.bookGenre | uppercase}}</td> 
+                           <td>{{ book.bookAuthor }}</td> 
+                           <td>{{ book.bookCost }}</td> 
+                           <td>
+                                <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    (click)="goToEditBook(book.id)">
+                                        <i class="material-icons">edit</i>
+                                </button>
+                           </td>
+                           <td>
                             <button
                                 type="button"
-                                class="btn btn-primary"
-                                (click)="goToEditBook(book.id)">
-                                    <i class="material-icons">edit</i>
+                                class="btn btn-danger"
+                                (click)="deleteBook(book.id)">
+                                    <i class="material-icons">delete</i>
                             </button>
-                       </td>
-                       <td>
-                        <button
-                            type="button"
-                            class="btn btn-danger"
-                            (click)="deleteBook(book.id)">
-                                <i class="material-icons">delete</i>
-                        </button>
-                       </td>
-                    
-                    </tr>
-                </tbody>
-            </table>
+                           </td>
+                        
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div *ngIf="storeMessage!=''">
+                <h3 class="text-danger">{{ storeMessage }}</h3>
+            </div>
             
         </div>
         <div class="col-2">

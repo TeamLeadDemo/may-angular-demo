@@ -11,7 +11,7 @@ import { BooksHttpService } from '../books-http.service';
 export class ViewHttpBooksComponent implements OnInit {
 
   currentAllBooks: Book[];
-
+  storeMessage: string = "";
   shouldDisplay: boolean = false;
   
   newBook: Book = {
@@ -38,10 +38,37 @@ export class ViewHttpBooksComponent implements OnInit {
   }
 
   loadData(){
-    this.bookHttpService.getAllBooks().subscribe(response => {
-      console.log(response);
-      this.currentAllBooks = response;
-    })
+    // this.bookHttpService.getAllBooks().subscribe(response => {
+    //   console.log(response);
+    //   this.storeMessage = '';
+    //   this.currentAllBooks = response;
+    // },
+    // (error)=> { 
+    //   console.log(error.error.errorMessage);
+    //   this.storeMessage = error.error.errorMessage;
+    // });
+
+    // subscribe(
+    //    {
+    //      next: ()=>{},
+    //      error: ()=>{}
+    //    }
+    //);
+
+    //newer variant of subscribe function which takes an observer object
+    //the older variant above is deprecated
+    this.bookHttpService.getAllBooks().subscribe(
+      {
+        next: (response) => {
+                              console.log(response);
+                              this.storeMessage = '';
+                              this.currentAllBooks = response;
+                          },
+        error: (error)=> { 
+          console.log(error.error.errorMessage);
+          this.storeMessage = error.error.errorMessage;
+        }
+      });
   }
 
   deleteBook(bookId: number){

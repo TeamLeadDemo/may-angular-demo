@@ -21,11 +21,20 @@ export class AuthService {
     sessionStorage.setItem("userInformation", JSON.stringify(user));
   }
 
-  retreiveUserInfo(): void{
+  retreiveUserInfo(): User{
+    let user: User = {
+      userName: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      role: ''
+    };
+    
     let userData: any = sessionStorage.getItem("userInformation");
     if(userData!=null){
-      return JSON.parse(userData);
+      user = JSON.parse(userData);
     }
+    return user;
     
   }
 
