@@ -1,0 +1,9 @@
+steps to deploy this angular project in ec2 instance with docker
+--------------------------------------------------------------------
+1) make sure the baseUrls in the angular services are pointing to the backend application deployed in ec2 instance 
+2) look out for the dockerfile and docker-compose.yml file added in this project.
+2) in EC2 instance's jenkins follow the following steps 
+    - install node js plugin in jenkins and restart jenkins
+    - go to 
+    - create a new jenkin pipeline project
+    -

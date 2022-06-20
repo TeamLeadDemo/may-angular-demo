@@ -8,7 +8,9 @@ import { User } from './user.model';
 })
 export class UsersService {
 
-  baseUrl: string = "http://localhost:7474/users";
+  //baseUrl: string = "http://localhost:7474/users";
+  baseUrl: string = "http://ec2-34-201-44-58.compute-1.amazonaws.com:8484/users";
+
   
   constructor(private http: HttpClient) { }
 
