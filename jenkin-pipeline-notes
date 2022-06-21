@@ -8,13 +8,13 @@ steps to deploy this angular project in ec2 instance with docker
         - click on Nodejs installation
         - provide the name as my-node
         - choose node version as 14.6
-        - In global npm packages to install enter @angular/cli
+        - In global npm packages to install type @angular/cli
         - And click on save
     - Now in jenkins dashboard, create a new jenkin pipeline project
         - paste the below pipeline script
         - save the job
     - build the jenkins job
-4) open a browser and type http://<ec2instance-url>:5200 and test the angular application
+4) open a browser and type http://<ec2instance-url>:2200 and test the angular application
 
 Issues faced due to EC2 instance(free tier)
 ------------------------------------------
@@ -24,8 +24,7 @@ Issues faced due to EC2 instance(free tier)
     - and then docker-compose - no issues
 
 The main issue was not able to build the angular project in EC2
-So a work around was to build the project in local and push the dist folder to github. Thereby avoiding the build in ec2 instance.
-The modified pipeline script is as follows
+So a work around was to build the project in local and push the dist folder to the github(to do this make sure to exclude dist folder from the .gitignore file of the angular project). Thereby avoiding the build in ec2 instance. Hence the comments in the below pipeline script. 
 
 pipeline script
 ---------------
