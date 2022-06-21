@@ -14,7 +14,7 @@ export class BooksHttpService {
   //baseUrl: string = "http://localhost:5555/api/books";
   
   // baseurl for the spring rest book crud project in ec2
-  baseUrl: string = "http://ec2-34-201-44-58.compute-1.amazonaws.com:8484/api/books";
+  baseUrl: string = "http://ec2-52-90-78-48.compute-1.amazonaws.com:8484/api/books";
   constructor(private http: HttpClient) { }
 
   getAllBooks(): Observable<Book[]>{

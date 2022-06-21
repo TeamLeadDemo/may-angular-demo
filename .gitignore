@@ -1,7 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
-# /dist
+# /dist // comment this line to make sure that the dist folder is also pushed to github
 /tmp
 /out-tsc
 /bazel-out

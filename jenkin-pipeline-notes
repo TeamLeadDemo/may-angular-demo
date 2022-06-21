@@ -1,0 +1,57 @@
+steps to deploy this angular project in ec2 instance with docker
+--------------------------------------------------------------------
+1) make sure the baseUrls in the angular services are pointing to the backend application deployed in ec2 instance 
+2) look out for the dockerfile and docker-compose.yml file added in this project.
+3) in EC2 instance's jenkins follow the steps 
+    - install node js plugin in jenkins and restart jenkins
+    - go to manage jenkins-> Global tool configuration -> Node section
+        - click on Nodejs installation
+        - provide the name as my-node
+        - choose node version as 14.6
+        - In global npm packages to install enter @angular/cli
+        - And click on save
+    - Now in jenkins dashboard, create a new jenkin pipeline project
+        - paste the below pipeline script
+        - save the job
+    - build the jenkins job
+4) open a browser and type http://<ec2instance-url>:5200 and test the angular application
+
+Issues faced due to EC2 instance(free tier)
+------------------------------------------
+    - pull the code from github - no issues
+    - run the npm install - no issues
+    - run ng build - this was not working
+    - and then docker-compose - no issues
+
+The main issue was not able to build the angular project in EC2
+So a work around was to build the project in local and push the dist folder to github. Thereby avoiding the build in ec2 instance.
+The modified pipeline script is as follows
+
+pipeline script
+---------------
+pipeline {
+    agent any
+    //tools (nodejs "my-node")    
+    stages {
+        stage('Git clone') {
+            steps {
+                // Get some code from a GitHub repository
+                git (url : 'https://github.com/TeamLeadDemo/may-angular-demo.git', branch : 'main')
+            }
+        }
+        stage('Build') {
+            steps {
+                sh "echo 'build'"
+            //   sh "npm install"
+            //   sh "ng build"
+            }
+        }
+        stage('Staging') {
+            steps {
+                sh "docker-compose down"
+                sh "docker-compose up -d"
+
+            }
+        }
+    }
+}
