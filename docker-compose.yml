@@ -4,5 +4,5 @@ services:
     image: angular-app
     build: .
     ports:
-      - 6200:80
+      - 8200:80
     
